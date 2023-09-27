@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -64,4 +65,26 @@ dependencies {
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+
+    // DateStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:3.4.0"
+
+    // ROOM
+    def roomVersion = "2.4.1"
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+    // livedata
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
 }

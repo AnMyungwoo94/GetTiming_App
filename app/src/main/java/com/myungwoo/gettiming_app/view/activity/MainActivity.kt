@@ -1,5 +1,6 @@
 package com.myungwoo.gettiming_app.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
@@ -23,5 +24,10 @@ class MainActivity : AppCompatActivity() {
        val bottomNavigationView = binding.bottomNavigationView
        val navController = findNavController(R.id.fragmentContainerView)
         bottomNavigationView.setupWithNavController(navController)
+
+        binding.setting.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

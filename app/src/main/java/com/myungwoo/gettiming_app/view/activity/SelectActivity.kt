@@ -26,7 +26,7 @@ class SelectActivity : AppCompatActivity() {
         binding = ActivitySelectBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.getCurrentCoinLisr()
+        viewModel.getCurrentCoinList()
 
         binding.laterTextArea.setOnClickListener {
             viewModel.setupFristFlag()

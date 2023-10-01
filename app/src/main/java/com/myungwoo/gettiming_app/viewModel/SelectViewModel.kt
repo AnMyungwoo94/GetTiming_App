@@ -32,7 +32,7 @@ class SelectViewModel : ViewModel() {
     val save: LiveData<String>
         get() = _save
 
-    fun getCurrentCoinLisr() = viewModelScope.launch {
+    fun getCurrentCoinList() = viewModelScope.launch {
         val result = netWorkRepository.getCurrentCoinList()
 
         currentPriceResultList = ArrayList()

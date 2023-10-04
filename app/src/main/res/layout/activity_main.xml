@@ -7,24 +7,10 @@
     android:background="@color/white"
     tools:context=".view.activity.MainActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:src="@drawable/main_logo"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar"/>
 
-    <ImageView
-        android:id="@+id/setting"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/setting"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <fragment
         android:id="@+id/fragmentContainerView"

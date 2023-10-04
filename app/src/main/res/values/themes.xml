@@ -14,12 +14,13 @@
         <!-- Customize your theme here. -->
         <!-- 타이틀바 없애기. -->
         <item name="windowNoTitle">true</item>
+
     </style>
     
     <style name="Theme.GetTiming_App.SplashScreen" parent="Theme.SplashScreen">
         <!-- 스플래시의 백그라운드 색 -->
-        <item name="windowSplashScreenBackground">@color/yellow</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/graph</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
         <!-- 위에 적용된 아이콘이 끝나고 어떻게 할거냐 -> 기본값으로 다시 되돌림 -->
         <item name="postSplashScreenTheme">@style/Theme.GetTiming_App</item>
     </style>

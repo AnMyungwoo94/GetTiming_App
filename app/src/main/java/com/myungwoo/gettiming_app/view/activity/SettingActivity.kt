@@ -6,8 +6,10 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.databinding.ActivitySettingBinding
@@ -19,6 +21,12 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar_setting)
+        setSupportActionBar(toolbar) // 액티비티의 앱바(App Bar)로 지정
+        supportActionBar?.setDisplayShowTitleEnabled(false) //타이틀 지우기
+        val actionBar = supportActionBar  // 앱바 제어를 위해 툴바 액세스
+        actionBar?.setDisplayHomeAsUpEnabled(true) // 앱바에 뒤로가기 버튼 만들기
 
         val isTiramisuOrHigher = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
         val notificationPermission = Manifest.permission.POST_NOTIFICATIONS
@@ -62,6 +70,16 @@ class SettingActivity : AppCompatActivity() {
             intent.action = "STOP"
             startService(intent)
 
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> { // 툴바 뒤로가기 버튼 눌렸을 때 동작
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

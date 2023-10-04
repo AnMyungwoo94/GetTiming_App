@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SelectActivity">
+    tools:context=".view.activity.SelectActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topTextArea"
@@ -16,11 +16,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="요즘 어떤 코인에\n마음을 뺏겼나요?"
-            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="관심있는 코인을 \n선택하세요"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

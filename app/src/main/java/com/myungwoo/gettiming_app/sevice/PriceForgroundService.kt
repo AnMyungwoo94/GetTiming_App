@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 
 class PriceForgroundService : Service() {
 
-    private val Notification_ID = 100
+    private val Notification_ID = 1000
     private val netWorkRepository = NetWorkRepository()
     lateinit var job: Job
 
@@ -41,16 +41,17 @@ class PriceForgroundService : Service() {
                     }
                 }
             }
-
             "STOP" -> {
+                Timber.d("STOP")
 
                 try {
                     job.cancel()
                     stopForeground(true)
                     stopSelf()
-                }catch (e: java.lang.Exception){
-                    Timber.d(e.toString())
+                } catch (e : java.lang.Exception) {
+
                 }
+
             }
         }
 

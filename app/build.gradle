@@ -55,7 +55,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation "com.airbnb.android:lottie:3.4.0"
-    def roomVersion = "2.4.1"
+    def roomVersion = "2.5.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")

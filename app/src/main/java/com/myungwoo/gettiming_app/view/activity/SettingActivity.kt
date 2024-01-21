@@ -13,9 +13,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.databinding.ActivitySettingBinding
-import com.myungwoo.gettiming_app.sevice.PriceForgroundService
+import com.myungwoo.gettiming_app.sevice.PriceForegroundService
 
 class SettingActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivitySettingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +24,10 @@ class SettingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar_setting)
-        setSupportActionBar(toolbar) // 액티비티의 앱바(App Bar)로 지정
-        supportActionBar?.setDisplayShowTitleEnabled(false) //타이틀 지우기
-        val actionBar = supportActionBar  // 앱바 제어를 위해 툴바 액세스
-        actionBar?.setDisplayHomeAsUpEnabled(true) // 앱바에 뒤로가기 버튼 만들기
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         val isTiramisuOrHigher = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
         val notificationPermission = Manifest.permission.POST_NOTIFICATIONS
@@ -42,7 +43,7 @@ class SettingActivity : AppCompatActivity() {
         val launcher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             hasNotificationPermission = it
             if (it) {
-                val intent = Intent(this, PriceForgroundService::class.java)
+                val intent = Intent(this, PriceForegroundService::class.java)
                 intent.action = "START"
                 startService(intent)
             }
@@ -53,7 +54,7 @@ class SettingActivity : AppCompatActivity() {
             Toast.makeText(this, "start", Toast.LENGTH_LONG).show()
 
             if (hasNotificationPermission) {
-                val intent = Intent(this, PriceForgroundService::class.java)
+                val intent = Intent(this, PriceForegroundService::class.java)
                 intent.action = "START"
                 startService(intent)
             } else if (isTiramisuOrHigher) {
@@ -66,7 +67,7 @@ class SettingActivity : AppCompatActivity() {
 
             Toast.makeText(this, "stop", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, PriceForgroundService::class.java)
+            val intent = Intent(this, PriceForegroundService::class.java)
             intent.action = "STOP"
             startService(intent)
 
@@ -75,10 +76,11 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            android.R.id.home -> { // 툴바 뒤로가기 버튼 눌렸을 때 동작
+            android.R.id.home -> {
                 finish()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

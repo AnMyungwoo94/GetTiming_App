@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import com.myungwoo.gettiming_app.sevice.PriceForgroundService
+import com.myungwoo.gettiming_app.sevice.PriceForegroundService
 import timber.log.Timber
 
 class BootReceiver : BroadcastReceiver() {
@@ -12,13 +12,13 @@ class BootReceiver : BroadcastReceiver() {
 
         Timber.d("onReceive")
         Timber.d(intent?.action)
-        if(intent?.action.equals("android.intent.action.BOOT_COMPLETED")){
-            val foreground = Intent(context, PriceForgroundService::class.java)
+        if (intent?.action.equals("android.intent.action.BOOT_COMPLETED")) {
+            val foreground = Intent(context, PriceForegroundService::class.java)
             foreground.action = "START"
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 context?.startForegroundService(foreground)
-            }else{
+            } else {
                 context?.startService(foreground)
             }
         }

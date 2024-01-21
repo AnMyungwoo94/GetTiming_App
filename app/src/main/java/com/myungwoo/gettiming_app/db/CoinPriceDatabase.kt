@@ -17,10 +17,9 @@ import com.myungwoo.gettiming_app.db.entity.SelectedCoinPriceEntity
 abstract class CoinPriceDatabase : RoomDatabase() {
 
     abstract fun interestCoinDAO(): InterestCoinDAO
-    abstract fun selectedCoinPriceDAO() : SelectedCoinPriceDAO
+    abstract fun selectedCoinPriceDAO(): SelectedCoinPriceDAO
 
     companion object {
-
         @Volatile
         private var INSTANCE: CoinPriceDatabase? = null
 
@@ -32,7 +31,7 @@ abstract class CoinPriceDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CoinPriceDatabase::class.java,
-                    "coin_database" //DB Name
+                    "coin_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

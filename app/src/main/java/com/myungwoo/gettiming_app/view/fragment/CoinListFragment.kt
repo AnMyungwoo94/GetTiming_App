@@ -8,24 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.databinding.FragmentCoinListBinding
 import com.myungwoo.gettiming_app.db.entity.InterestCoinEntity
 import com.myungwoo.gettiming_app.view.adapter.CoinListRVAdapter
 import com.myungwoo.gettiming_app.viewModel.MainViewModel
 import timber.log.Timber
 
-
 class CoinListFragment : Fragment() {
     private lateinit var binding: FragmentCoinListBinding
     private val viewModel: MainViewModel by activityViewModels()
     private val selectedList = ArrayList<InterestCoinEntity>()
     private val unselectedList = ArrayList<InterestCoinEntity>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +32,7 @@ class CoinListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllInterestCoinData()
         viewModel.selectedCoinList.observe(viewLifecycleOwner, Observer {
-//            Timber.d(it.toString())
 
-            //라이브데이터가 실행될 때마다 쌓여지니 clear해주기
             selectedList.clear()
             unselectedList.clear()
 
@@ -67,7 +58,7 @@ class CoinListFragment : Fragment() {
 
         selectedRVAdapter.itemClick = object : CoinListRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-               viewModel.updateInterestCoinData(selectedList[position])
+                viewModel.updateInterestCoinData(selectedList[position])
             }
         }
 

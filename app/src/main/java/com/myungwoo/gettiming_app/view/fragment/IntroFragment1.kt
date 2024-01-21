@@ -10,19 +10,13 @@ import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.databinding.FragmentIntro1Binding
 
 class IntroFragment1 : Fragment() {
-    private var _binding : FragmentIntro1Binding? = null
+    private var _binding: FragmentIntro1Binding? = null
     private val binding get() = _binding!!
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         _binding = FragmentIntro1Binding.inflate(inflater, container, false)
         return binding.root
     }

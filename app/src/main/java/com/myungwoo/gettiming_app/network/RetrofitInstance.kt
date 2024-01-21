@@ -13,7 +13,7 @@ object RetrofitInstance {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun getInstance() : Retrofit{
+    fun getInstance(): Retrofit {
         return client
     }
 }

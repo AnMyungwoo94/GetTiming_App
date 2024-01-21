@@ -10,15 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.dataModel.UpDownDataSet
 
-class PriceListUpDownRVAdapter(val context : Context, val dataSet : List<UpDownDataSet>)
-    :RecyclerView.Adapter<PriceListUpDownRVAdapter.ViewHolder>(){
+class PriceListUpDownRVAdapter(val context: Context, val dataSet: List<UpDownDataSet>) : RecyclerView.Adapter<PriceListUpDownRVAdapter.ViewHolder>() {
 
-        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-            val coinName = view.findViewById<TextView>(R.id.coinName)
-            val coinPriceUpDown = view.findViewById<TextView>(R.id.coinPriceUpDown)
-            val price = view.findViewById<TextView>(R.id.price)
-        }
+        val coinName = view.findViewById<TextView>(R.id.coinName)
+        val coinPriceUpDown = view.findViewById<TextView>(R.id.coinPriceUpDown)
+        val price = view.findViewById<TextView>(R.id.price)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.coin_price_change_item, parent, false)
@@ -26,14 +25,14 @@ class PriceListUpDownRVAdapter(val context : Context, val dataSet : List<UpDownD
     }
 
     override fun getItemCount(): Int {
-       return dataSet.size
+        return dataSet.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.coinName.text = dataSet[position].coinName
 
-        if(dataSet[position].upDownPrice.contains("-")){
+        if (dataSet[position].upDownPrice.contains("-")) {
             holder.coinPriceUpDown.text = "하락"
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#114fed"))
         } else {
@@ -42,7 +41,5 @@ class PriceListUpDownRVAdapter(val context : Context, val dataSet : List<UpDownD
         }
 
         holder.price.text = dataSet[position].upDownPrice.split(".")[0]
-
     }
-
 }

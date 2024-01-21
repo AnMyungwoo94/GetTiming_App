@@ -13,7 +13,7 @@ import com.myungwoo.gettiming_app.R
 import com.myungwoo.gettiming_app.dataModel.CurrentPriceResult
 import timber.log.Timber
 
-class SelectRVAdapter(val context: Context, val coinPriceList: List<CurrentPriceResult>) :
+class SelectRVAdapter(val context: Context, private val coinPriceList: List<CurrentPriceResult>) :
     RecyclerView.Adapter<SelectRVAdapter.ViewHolder>() {
 
     val selectedCoinList = ArrayList<String>()
@@ -51,20 +51,18 @@ class SelectRVAdapter(val context: Context, val coinPriceList: List<CurrentPrice
         val likeImage = holder.likeImage
         val currentCoin = coinPriceList[position].coinName
 
-        //리사이클러뷰 재사용되서 하트가 아래에도 나올 경우
-        if(selectedCoinList.contains(currentCoin)){
+        if (selectedCoinList.contains(currentCoin)) {
             likeImage.setImageResource(R.drawable.like_red)
-        }else{
+        } else {
             likeImage.setImageResource(R.drawable.like_grey)
         }
 
-       likeImage.setOnClickListener {
+        likeImage.setOnClickListener {
             Timber.d(currentCoin)
-            //포함하면
-            if(selectedCoinList.contains(currentCoin)){
+            if (selectedCoinList.contains(currentCoin)) {
                 selectedCoinList.remove(currentCoin)
                 likeImage.setImageResource(R.drawable.like_grey)
-            }else{
+            } else {
                 selectedCoinList.add(currentCoin)
                 likeImage.setImageResource(R.drawable.like_red)
             }

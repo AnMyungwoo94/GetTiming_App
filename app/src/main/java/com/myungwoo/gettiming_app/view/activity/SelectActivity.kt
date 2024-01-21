@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit
 
 class SelectActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivitySelectBinding
-    private val viewModel : SelectViewModel by viewModels()
+    private lateinit var binding: ActivitySelectBinding
+    private val viewModel: SelectViewModel by viewModels()
     private lateinit var selectRVAdapter: SelectRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +34,9 @@ class SelectActivity : AppCompatActivity() {
         }
 
         viewModel.save.observe(this, Observer {
-            if(it.equals("done")){
+            if (it.equals("done")) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-
-                //가장 처음으로 우리가 불러온 코인의 정보가 저장되는 시점
                 saveInterestCoinDataPeriodic()
             }
         })
@@ -47,11 +45,10 @@ class SelectActivity : AppCompatActivity() {
             selectRVAdapter = SelectRVAdapter(this, it)
             binding.coinListRV.adapter = selectRVAdapter
             binding.coinListRV.layoutManager = LinearLayoutManager(this)
-
         })
     }
 
-    private fun saveInterestCoinDataPeriodic(){
+    private fun saveInterestCoinDataPeriodic() {
 
         val myWork = PeriodicWorkRequest.Builder(
             RecentCoinWorkManager::class.java,
@@ -59,7 +56,6 @@ class SelectActivity : AppCompatActivity() {
             TimeUnit.MINUTES
         ).build()
 
-        //유니트하게 하나만 돌아가게끔,,
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "RecentCoinWorkManager",
             ExistingPeriodicWorkPolicy.KEEP,

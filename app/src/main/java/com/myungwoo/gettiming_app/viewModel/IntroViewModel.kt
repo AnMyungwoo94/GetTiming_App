@@ -15,12 +15,10 @@ class IntroViewModel : ViewModel() {
     val frist: LiveData<Boolean>
         get() = _frist
 
-    fun checkFristFlag() = viewModelScope.launch {
-
+    fun checkFirstFlag() = viewModelScope.launch {
         delay(2000)
-        val getData = MyDataStore().getFristData()
+        val getData = MyDataStore().getFirstData()
         _frist.value = getData
         Timber.d(getData.toString())
     }
-
 }
